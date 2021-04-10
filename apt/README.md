@@ -2,6 +2,7 @@
 
 ### &#x1F539; APT :
     sudo apt-get -o Dpkg::Options::="--force-overwrite" upgrade
+    sudo apt-get -o DPkg::Options::="--force-confmiss" --reinstall install PACKNAME_HERE
     
 
 #### &#x1F539; FIX Metasploit Key Expired :
