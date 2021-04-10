@@ -1,0 +1,10 @@
+root
+admin
+toor
+user
+administrator
+r00t
+cisco
+test
+support
+nobody
