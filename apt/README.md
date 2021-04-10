@@ -16,6 +16,7 @@
     sudo apt-get install perl-doc
     sudo apt-get install python3 python-dev python3-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip
     sudo apt-get install python-gevent python-gevent-websocket
+    sudo apt-get install python-mysqldb
     
 #### &#x1F539; ADD Kali tools in backbox : 
     cat << EOF > /etc/apt/sources.list
