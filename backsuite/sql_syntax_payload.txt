@@ -1,0 +1,21 @@
+Warning error
+: include(
+Failed opening
+include_path=
+Undefined variable
+Parse error
+syntax error
+unexpected
+Fatal error
+Uncaught Error
+throw in 
+You have an error in
+SQL syntax
+SQL Statement
+valid PostgreSQL result
+Microsoft Access Driver
+System.Data.SQLite.SQLiteException
+Sybase message
+SQLite.Exception
+DB2 SQL error
+Microsoft SQL Server
