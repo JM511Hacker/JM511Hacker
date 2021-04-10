@@ -63,6 +63,7 @@
     nmap -F --script icap-info <TARGET>
     nmap --script=http-enum -p80 -n 
     nmap -p 1344 --script icap-info <TARGET>
+    nmap -sn -Pn --script hostmap-crtsh <TARGET>
     
     
 # <img width="28" src="http://0z3r00t3r.6te.net/img/folder.png"> Curl : 
