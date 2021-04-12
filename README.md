@@ -19,6 +19,8 @@
 - [ &#x1F4C4;  ] List of Syntax <I><b>[errors]</b></I> to detect an SQL injection 
 - [ &#x274C;  ] Xss payloads 
 - [ &#x1F50D;  ] SQL injection - Characters
+- [ &#x1F51D;  ] Adding exiftool - Bypass uploading shell
+
 
 <hr>
 
