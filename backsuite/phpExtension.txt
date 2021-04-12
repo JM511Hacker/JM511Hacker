@@ -30,3 +30,4 @@ php%20
 shtml
 swf
 yaws
+jpg/[.php]\/.\'
