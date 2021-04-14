@@ -50,6 +50,8 @@
     - find /var/www/html/ -type d -perm 755 -exec find {} -name "*.zip" \;
     - find / -xdev -type f -size +100M -exec ls -la {} \; | sort -nk 5
     - find . -name "*.sql"
+    #Remove space between lines in file.txt / a.json result
+    - sed '/^ *$/d' a1.json > output.txt
     
 #### &#x1F538; Reading files end with php and search for Shell :
     grep '((eval.*(base64_decode|gzinflate|\$_))|\$[0O]{4,}|FilesMan|JGF1dGhfc|IIIl|die\(PHP_OS|posix_getpwuid|Array\(base64_decode|document\.write\("\\u00|sh(3(ll|11)))' . -lroE --include=*.php*
