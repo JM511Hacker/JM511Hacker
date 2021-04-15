@@ -41,6 +41,8 @@
     #view established connections
     - lsof -i
     - #looking for cracks:google:(Xxxx)" 94fbr)
+    #Adding random word before list ex: admin -> will be -> 9xadmin,eqadmin,ifadmin:
+    - paste <(base64 -w2 /dev/urandom) user_list.txt | awk 'NF==2{print $1$2} NF!=2{exit}'
     
 ##### &#x1F538; Grep / Find String : 
     #find inside any file and print it 
