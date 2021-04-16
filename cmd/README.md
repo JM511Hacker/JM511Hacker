@@ -52,6 +52,8 @@
     - find /var/www/html/ -type d -perm 755 -exec find {} -name "*.zip" \;
     - find / -xdev -type f -size +100M -exec ls -la {} \; | sort -nk 5
     - find . -name "*.sql"
+    #Zip all folders to a1.zip
+    - zip -r a1.zip .
     #Remove space between lines in file.txt / a.json result
     - sed '/^ *$/d' a1.json > output.txt
     #Print & save only 5 words in list.txt
