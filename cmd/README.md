@@ -108,3 +108,13 @@
     - iptables -A INPUT -s xxxxxxx -j DROP
     - iptables -A INPUT -s xxxxxxxx -p tcp --destination-port 80 -j DROP
     - iptables -A INPUT -s xxxxxxxx -p tcp --destination-port 443 -j DROP
+
+##### &#x1F538; Generate 1M 0-1,000,000 number
+    #!/usr/bin/env bash
+    i=1
+    while [ $i -le 1000000 ]
+    do
+        echo $i
+        i=$(($i+1))
+    done
+ 
