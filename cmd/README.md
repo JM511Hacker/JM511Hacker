@@ -118,3 +118,12 @@
         i=$(($i+1))
     done
  
+ ##### &#x1F538; Random List 4 Words
+    #!/usr/bin/env bash
+    i=1
+    while [ $i -le 10000 ]
+    do
+        tr -dc a-z0-9 </dev/urandom | head -c 4 ; echo ''
+        i=$(($i+1))
+    done
+
