@@ -2,6 +2,8 @@
 ##### &#x1F538;  VPN config (term) :
 `sudo openvpn --config vpnbook-euro2-tcp80.ovpn`
 
+`hashcat -a 3 --stdout ?l | gobuster dir -u https://TARGET -w - --wildcard`
+
 ##### &#x1F538;  BEST DORK FOR Bing.com : 
     -site:.com intitle:login.page inbody:"User Login"
     intitle:login.page inbody:"User Login" instreamset:url:".php"
