@@ -1,18 +1,3 @@
-/*
-
-  Using google / bing / yahoo serach engineering yet.. (updating)
-  
-  You will see only [ php ] + [ aspx ] files on proxy and scan..
-  
-  Add to Exclude as much as you don't want to see in proxy / scan..
-  
-  The best regex for getting .php?id=1212 and .aspx?id=1212 ... No /
-  
-  Load the scope and start proxy browser > go to google.com and start searching for a target with some dork like site:.com inurl:view.php?id= , when you open the link it will be start scanning the target if it end with .php?id not /
-
-  v1.1.1
-
-*/
 {
     "target":{
         "scope":{
@@ -20,7 +5,7 @@
             "exclude":[
                 {
                     "enabled":true,
-                    "file":".*\\.(xml|axd|js|cgi|json|css|png|jpg|jpeg|gif|ico|icon|woff|woff2|jfif|svg|mp4|mp3|pdf|doc|ttf|html|otf)",
+                    "file":".*\\.(axd|cgi|css|png|jpg|jpeg|gif|ico|icon|woff|woff2|jfif|svg|mp4|mp3|pdf|doc|ttf|otf)",
                     "protocol":"any"
                 },
                 {
@@ -445,17 +430,79 @@
                     "host":"^hcaptcha\\.com$",
                     "port":"^443$",
                     "protocol":"https"
+                },
+                {
+                    "enabled":true,
+                    "host":"msn.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"microsoftonline.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"live.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"bing.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"firefox.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"twitter.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"youtube.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"snapchat.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"bingparachute.com",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "host":"facebook.net",
+                    "protocol":"any"
                 }
             ],
             "include":[
                 {
                     "enabled":true,
-                    "file":"^*\\.([aspxh]{3,4}+\\?[a-z+&$_.-][a-z0-9;:@&%=+/.-]*)?(#[a-z_.-][a-z0-9+$%_.-]*)?",
+                    "file":"([a-zA-Z0-9-_.]+[\\S]+[?$])",
                     "protocol":"any"
                 },
                 {
                     "enabled":true,
-                    "file":"([aspxh]{3,4}\\?\\w+=\\w+)",
+                    "file":"([a-zA-Z0-9-_.]+[.]+[a-z]{2,4}$)",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "file":"([a-zA-Z0-9-_.]+[/]$)",
+                    "protocol":"any"
+                },
+                {
+                    "enabled":true,
+                    "file":"^",
+                    "host":"^",
+                    "port":"^",
                     "protocol":"any"
                 }
             ]
