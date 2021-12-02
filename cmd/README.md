@@ -45,6 +45,10 @@
     - #looking for cracks:google:(Xxxx)" 94fbr)
     #Adding random word before list ex: admin -> will be -> 9xadmin,eqadmin,ifadmin:
     - paste <(base64 -w2 /dev/urandom) user_list.txt | awk 'NF==2{print $1$2} NF!=2{exit}'
+    #Onion: 
+    - proxychains sudo nmap -Pn --script=vuln site.onion
+    - proxychains sudo nmap -Pn --script=vuln 23.202.231.55
+    
     
 ##### &#x1F538; Grep / Find String : 
     #find inside any file and print it 
@@ -54,6 +58,8 @@
     - find /var/www/html/ -type d -perm 755 -exec find {} -name "*.zip" \;
     - find / -xdev -type f -size +100M -exec ls -la {} \; | sort -nk 5
     - find . -name "*.sql"
+    #To search in .php and cat them all same time
+    - find . -name "*.php" -type f -exec cat {} \;
     #Zip all folders to a1.zip
     - zip -r a1.zip .
     #Remove space between lines in file.txt / a.json result
