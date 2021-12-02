@@ -60,6 +60,9 @@
     - sed '/^ *$/d' a1.json > output.txt
     #Print & save only 5 words in list.txt
     - awk 'length>5' list.txt > done_list.txt
+    #Remove duplicate lines from file.txt file :
+    - sort file.txt | uniq -d
+    - sort -u file.txt
     
 #### &#x1F538; Reading files end with php and search for Shell :
     grep '((eval.*(base64_decode|gzinflate|\$_))|\$[0O]{4,}|FilesMan|JGF1dGhfc|IIIl|die\(PHP_OS|posix_getpwuid|Array\(base64_decode|document\.write\("\\u00|sh(3(ll|11)))' . -lroE --include=*.php*
