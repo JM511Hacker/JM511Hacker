@@ -58,6 +58,15 @@
     - find /var/www/html/ -type d -perm 755 -exec find {} -name "*.zip" \;
     - find / -xdev -type f -size +100M -exec ls -la {} \; | sort -nk 5
     - find . -name "*.sql"
+    - tail -n 3 /var/log/auth.log | grep -E -o "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]{1,3}"
+    - tail -n 1 /var/log/apache2/access.log | grep -E -o "^[0-9]+.[0-9]+.[0-9]+.[0-9]{1,3}"
+    ---for sqlmap grep and match---
+    - egrep -i "(GET.+.appears.to.be|INFO.+.the.back-end.DBMS|back-end DBMS|web application technology|available databases|\[\*\]|it looks like the|INFO])"
+    - grep -E "Type: boolean-based blind"
+    - grep -E "Type: time-based blind"
+    - grep -E "GET parameter '.+.' appears to be"
+    - grep -E "web server operating system:"
+    -------------------------------
     #To search in .php and cat them all same time
     - find . -name "*.php" -type f -exec cat {} \;
     #Zip all folders to a1.zip
@@ -69,6 +78,8 @@
     #Remove duplicate lines from file.txt file :
     - sort file.txt | uniq -d
     - sort -u file.txt
+    
+
     
 #### &#x1F538; Reading files end with php and search for Shell :
     grep '((eval.*(base64_decode|gzinflate|\$_))|\$[0O]{4,}|FilesMan|JGF1dGhfc|IIIl|die\(PHP_OS|posix_getpwuid|Array\(base64_decode|document\.write\("\\u00|sh(3(ll|11)))' . -lroE --include=*.php*
