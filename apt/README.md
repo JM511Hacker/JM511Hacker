@@ -71,3 +71,9 @@
     - 
     #TO KILL PORT NUMBER 80 :
     - sudo fuser -vk 80/tcp
+
+    #mysql screen: 
+    #change username and password -> CREATE USER 'r00t'@'localhost' IDENTIFIED BY 'r00t';
+    #change username -> GRANT ALL PRIVILEGES ON *.* TO 'r00t'@'localhost' WITH GRANT OPTION;
+    #-> FLUSH PRIVILEGES;
+    exit;
