@@ -78,6 +78,8 @@
     #Remove duplicate lines from file.txt file :
     - sort file.txt | uniq -d
     - sort -u file.txt
+    #Kill by name
+    - pkill -f "python3 file.py"
     
 
     
